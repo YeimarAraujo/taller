@@ -22,7 +22,7 @@ public class Ppal {
             System.out.println("3. Eliminar Alojamiento");
             System.out.println("4. Lista de Alojamientos");
             System.out.println("5. Salir");
-            System.out.print("Seleccione una opciÃ³n: ");
+            System.out.print("Seleccione una opcion: ");
             
             int opcion = scanner.nextInt();
             
@@ -31,28 +31,30 @@ public class Ppal {
 
                     System.out.println("Ingrese el codigo del alojamiento:");
                     int codigo = scanner.nextInt();
+                    scanner.nextLine();
                     System.out.println("Ingrese la direccion:");
                     String direccion = scanner.nextLine();
+                    
                     System.out.println("Ingrese la ciudad:");
                     String ciudad = scanner.nextLine();
                     System.out.println("Ingrese el pais:");
                     String pais = scanner.nextLine();
                     
-                    System.out.println("Ingrese el tipo de alojamiento: (1 para CabaÃ±a, 2 para Habitacion)");
+                    System.out.println("Ingrese el tipo de alojamiento: (1 para Cabaña, 2 para Habitacin)");
                     int tipo = scanner.nextInt();
                     
                     if (tipo == 1) {
                         System.out.println("Ingrese el numero de cuartos:");
                         int noCuartos = scanner.nextInt();
-                        CabaÃ±a cabaÃ±a = new CabaÃ±a(noCuartos, codigo, direccion, ciudad, pais);
-                        registro.agregarAlojamiento(cabaÃ±a);
+                        Cabaña cabaña = new Cabaña(noCuartos, codigo, direccion, ciudad, pais);
+                        registro.agregarAlojamiento(cabaña);
                         System.out.println("Cabana agregada.");
                     } else if (tipo == 2) {
                         System.out.println("Ingrese el numero maximo de personas:");
                         int noMaxPersona = scanner.nextInt();
                         Habitacion habitacion = new Habitacion(noMaxPersona, codigo, direccion, ciudad, pais);
                         registro.agregarAlojamiento(habitacion);
-                        System.out.println("HabitaciÃ³n agregada.");
+                        System.out.println("Habitación agregada.");
                     }
                }
                     
@@ -62,13 +64,15 @@ public class Ppal {
                     Alojamiento alojamientoCotizar = registro.buscar(codigoCotizacion);
                     
                     if (alojamientoCotizar != null) {
-                        System.out.println("Ingrese la fecha de inicio (YYYY-MM-DD):");
+                        System.out.println("Ingrese la fecha de inicio (AÑO-MES-DIA):");
+                        System.out.println("Ejemplo: 2012-03-01");
                         LocalDate fechaInicio = LocalDate.parse(scanner.next());
-                        System.out.println("Ingrese la fecha de fin (YYYY-MM-DD):");
+                        System.out.println("Ingrese la fecha de fin (AÑO-MES-DIA):");
+                        System.out.println("Ejemplo: 2014-04-05");
                         LocalDate fechaFin = LocalDate.parse(scanner.next());
                         
                         Cotizacion cotizacion = new Cotizacion(fechaInicio, fechaFin, alojamientoCotizar);
-                        System.out.println("CotizaciÃ³n generada:");
+                        System.out.println("Cotización generada:");
                         System.out.println(cotizacion);
                     } else {
                         System.out.println("Alojamiento no encontrado.");
